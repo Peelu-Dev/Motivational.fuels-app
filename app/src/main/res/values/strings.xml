@@ -6,4 +6,7 @@
     <string name="_app_name">Motivational.fuels</string>
     <string name="drawer_logo">drawer_logo</string>
     <string name="_app">Motivational.fuels App</string>
+    <string name="share">share</string>
+    <string name="rate">rate</string>
+    <string name="more">more</string>
 </resources>
