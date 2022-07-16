@@ -7,14 +7,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
+import com.peelu.motivationfuels.adapter.CategoryAdapter
 import com.peelu.motivationfuels.databinding.ActivityMainBinding
+import com.peelu.motivationfuels.model.CategoryModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var db:FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        db = FirebaseFirestore.getInstance()
+
+        db.collection("Quotes").addSnapshotListener{ value,_ ->
+            val quotes= arrayListOf<CategoryModel>()
+            val data = value?.toObjects(CategoryModel::class.java)
+            quotes.addAll(data!!)
+            binding.rcvCategory.layoutManager = LinearLayoutManager(this)
+            binding.rcvCategory.adapter = CategoryAdapter(this,quotes)
+        }
+//        val shayari = arrayListOf("Love Shayari","Attitude Shayari","Romantic Shayari")
+
+
 
         binding.btnMenu.setOnClickListener{
             if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -31,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                         val shareIntent = Intent(Intent.ACTION_SEND)
                         shareIntent.type = "text/plain"
                         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name")
-                        var shareMessage = "Install this App to get Motivational quotes daily"
+                        var shareMessage = "Install this App to get new hindi Shayariaan"
                         shareMessage =
                             """
                             ${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}
@@ -47,9 +65,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.rate -> {
                     try {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.wordel")))
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.peelu.merishayari")))
                     } catch (e: ActivityNotFoundException) {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.wordel")))
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.peelu.merishayari")))
                     }
                     true
                 }
