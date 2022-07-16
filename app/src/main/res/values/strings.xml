@@ -2,4 +2,6 @@
     <string name="app_name">Motivation.fuels</string>
     <string name="splash_screen">splash_screen</string>
     <string name="App_name">Motivational.fuels App</string>
+    <string name="menu">menu</string>
+    <string name="_app_name">Motivational.fuels</string>
 </resources>
