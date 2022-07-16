@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Motivation.fuels</string>
+    <string name="splash_screen">splash_screen</string>
+    <string name="App_name">Motivational.fuels App</string>
 </resources>
