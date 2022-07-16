@@ -46,10 +46,11 @@
             </TextView>
 
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rcvCategory"
             android:layout_below="@+id/toolbar">
 
         </androidx.recyclerview.widget.RecyclerView>
