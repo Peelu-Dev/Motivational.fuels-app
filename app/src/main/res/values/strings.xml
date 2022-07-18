@@ -10,4 +10,10 @@
     <string name="rate">rate</string>
     <string name="more">more</string>
     <string name="_category">Hindi Category</string>
+    <string name="quotes">Quotes</string>
+    <string name="_share">_share</string>
+    <string name="copy">copy</string>
+    <string name="whatsapp">whatsapp</string>
+    <string name="custom_toolbar">Custom_toolbar</string>
+    <string name="menu_bar">menu_bar</string>
 </resources>
